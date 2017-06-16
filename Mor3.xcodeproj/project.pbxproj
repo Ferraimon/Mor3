@@ -312,6 +312,7 @@
 				53AABF081EEED587003C72BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
