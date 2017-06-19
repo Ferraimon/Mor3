@@ -7,15 +7,28 @@
 //
 
 import UIKit
+import Parse
+
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        let config = ParseClientConfiguration { (configThing: ParseMutableClientConfiguration) in
+            configThing.applicationId = "mor3Parse"
+            configThing.server = "http://mor3.herokuapp.com/parse"
+        }
+        Parse.initialize(with: config)
+        
         return true
     }
 
