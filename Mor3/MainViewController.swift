@@ -22,14 +22,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.allowsSelection = false
         tableView.dataSource = self
         tableView.delegate = self
         
         loadUsers()
         
         self.refreshControl.addTarget(self, action: #selector(doSomething), for: .valueChanged)
-        // this is the replacement of implementing: "collectionView.addSubview(refreshControl)"
         tableView.refreshControl = refreshControl
         
         // Do any additional setup after loading the view.
@@ -144,7 +143,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     cell.fotoImageView.layer.borderColor = UIColor.white.cgColor
                     cell.fotoImageView.layer.cornerRadius = cell.fotoImageView.frame.size.width/2
                     cell.fotoImageView.clipsToBounds = true
-                    cell.backgroundImageView.addBlurEffect()
                     cell.backgroundImageView.image = image
                 }
             }
@@ -169,24 +167,4 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 }
 
-extension UIImageView
-{
-    func addBlurEffect()
-    {
-        
-        
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.bounds
-        blurEffectView.alpha = 0.85
-        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
-        let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
-        vibrancyEffectView.frame = self.bounds
-        //self.addSubview(vibrancyEffectView)
-        
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-        self.addSubview(blurEffectView)
-        
-        
-    }
-}
+
