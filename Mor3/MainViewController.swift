@@ -19,10 +19,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var user = PFUser.current()
     var users : [PFObject]? = []
     let refreshControl = UIRefreshControl()
+    var myLocation: PFGeoPoint!
+    
+    var datosParaDetalle: PFObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.allowsSelection = false
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -48,8 +51,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         PFGeoPoint.geoPointForCurrentLocation { (point:  PFGeoPoint?, error: Error?) in
             if error == nil {
-                PFUser.current()!.setValue(point, forKey:"PFGeopoint")
-                PFUser.current()!.saveInBackground()
+                PFUser.current()?.setValue(point, forKey:"PFGeopoint")
+                PFUser.current()?.saveInBackground()
             } else {
                 print(error!)
             }
@@ -70,6 +73,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let query = PFUser.query()
         PFGeoPoint.geoPointForCurrentLocation { (point:  PFGeoPoint?, error: Error?) in
             if error == nil {
+                self.myLocation = point
                 query?.whereKey("PFGeopoint", nearGeoPoint: point!)
                 query?.findObjectsInBackground { (usuarios: [PFObject]?, error: Error?) in
                     if let usuarios = usuarios as [PFObject]? {
@@ -128,9 +132,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let losDatos = self.users![indexPath.row]
         
+        
         cell.nombreLabel.text = losDatos["name"] as? String
         cell.edadLabel.text = losDatos["edad"] as? String
         cell.eresLabel.text = losDatos["eres"] as? String
+        let userLocation = losDatos["PFGeopoint"] as? PFGeoPoint
+        
+        let distance = String(format: "%.2f", userLocation!.distanceInKilometers(to: myLocation))
+        cell.distLabel.text = " \(distance) km"
         
         let userImageFile = losDatos["pofilePic"] as! PFFile
         userImageFile.getDataInBackground { (imageData: Data?, error: Error?) in
@@ -148,12 +157,28 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         
-        
-        
-        
-        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath:IndexPath) {
+        
+        self.datosParaDetalle = self.users?[indexPath.row]
+        //print(datosParaDetalle)
+        self.performSegue(withIdentifier: "detalleVC", sender: datosParaDetalle)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detalleVC"{
+            if let nextViewController = segue.destination as? DetalleViewController {
+                print("Aqui has llegado")
+                nextViewController.datosRecibidos = sender as! PFObject
+            }
+        }
+    }
+    
+    
+    
     
     /*
     // MARK: - Navigation

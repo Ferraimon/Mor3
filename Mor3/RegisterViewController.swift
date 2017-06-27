@@ -24,7 +24,12 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             return eresPicker.count
         }
         else if (buscasTextField.isEditing){
-            return buscasPicker.count
+            
+            if eresTextField.text == "Un chico Solo" {
+                return buscasPicker2.count
+            } else {
+                return buscasPicker.count
+            }
         }
         else  if (rolTextField.isEditing){
             return rolPicker.count
@@ -44,8 +49,12 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             
         }
         else if (buscasTextField.isEditing){
-            
-            return buscasPicker[row]
+            if eresTextField.text == "Un chico Solo" {
+                
+                return buscasPicker2[row]
+            } else {
+                return buscasPicker[row]
+            }
             
         } else if (rolTextField.isEditing){
             
@@ -69,8 +78,11 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         else  if (buscasTextField.isEditing){
             
-            buscasTextField.text = buscasPicker[row]
-            
+            if eresTextField.text == "Un chico Solo" {
+                buscasTextField.text = buscasPicker2[row]
+            } else {
+                buscasTextField.text = buscasPicker[row]
+            }
         } else if (rolTextField.isEditing){
             rolTextField.text = rolPicker[row]
         } else if (alturaTextField.isEditing) {
@@ -96,7 +108,8 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var eresTextField: UITextField!
     @IBOutlet weak var profileImageView: UIImageView!
     var eresPicker = ["Un chico Solo", "Una Pareja", "Un grupo de Amigos", "Un grupo Sexual"]
-    var buscasPicker = ["Un chico Solo", "Una Pareja", "Un grupo de Amigos", "Un grupo Sexual", "Una Prueba"]
+    var buscasPicker = ["Un chico Solo", "Una Pareja", "Un grupo de Amigos", "Un grupo Sexual"]
+    var buscasPicker2 = ["Una Pareja", "Un grupo de Amigos", "Un grupo Sexual"]
     var rolPicker = ["Activo", "Versatil", "Pasivo"]
     var alturaPicker = [String]()
     var pesoPicker = [String]()
@@ -108,7 +121,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        PFUser.logOut()
         
         let pickerView = UIPickerView()
         pickerView.delegate = self
@@ -118,15 +131,10 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.emailTextField.delegate = self
         self.imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
         
-        //userTextField.placeholder = "Usuario"
-        //edadTextField.placeholder = "Edad"
-        //emailTextField.placeholder = "Email"
-        //passwordTextField.placeholder = "Password"
-        //userTextField.attributedPlaceholder = NSAttributedString(string: "Usuario", attributes: [NSForegroundColorAttributeName: UIColor.white])
+        
         
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
-        self.present(imagePicker, animated: true, completion: nil)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         profileImageView.isUserInteractionEnabled = true

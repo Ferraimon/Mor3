@@ -16,6 +16,7 @@
 		53AABF4A1EF3DAB4003C72BA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AABF491EF3DAB4003C72BA /* RegisterViewController.swift */; };
 		53F728661EF66C6700BD4534 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F728651EF66C6700BD4534 /* MainViewController.swift */; };
 		53F728691EF80AA500BD4534 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F728681EF80AA500BD4534 /* CustomTableViewCell.swift */; };
+		7ADA02DA1EFE6CFE001D6064 /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADA02D91EFE6CFE001D6064 /* DetalleViewController.swift */; };
 		7F6250279497DC3DAF07EC61 /* Pods_Mor3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2015884BABF31B62DD3C1A8 /* Pods_Mor3.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		53F728651EF66C6700BD4534 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		53F728671EF7C7BC00BD4534 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		53F728681EF80AA500BD4534 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		7ADA02D91EFE6CFE001D6064 /* DetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleViewController.swift; sourceTree = "<group>"; };
 		B2015884BABF31B62DD3C1A8 /* Pods_Mor3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mor3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55440D8346F4742D2F26601 /* Pods-Mor3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mor3.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mor3/Pods-Mor3.release.xcconfig"; sourceTree = "<group>"; };
 		FE7C94B4EE468788BC0CDB4D /* Pods-Mor3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mor3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mor3/Pods-Mor3.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				53AABF471EF3D9DF003C72BA /* LoginViewController.swift */,
 				53AABF491EF3DAB4003C72BA /* RegisterViewController.swift */,
 				53F728651EF66C6700BD4534 /* MainViewController.swift */,
+				7ADA02D91EFE6CFE001D6064 /* DetalleViewController.swift */,
 				53F728681EF80AA500BD4534 /* CustomTableViewCell.swift */,
 				53AABEFB1EEED587003C72BA /* Main.storyboard */,
 				53AABEFE1EEED587003C72BA /* Assets.xcassets */,
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ADA02DA1EFE6CFE001D6064 /* DetalleViewController.swift in Sources */,
 				53F728691EF80AA500BD4534 /* CustomTableViewCell.swift in Sources */,
 				53AABF481EF3D9DF003C72BA /* LoginViewController.swift in Sources */,
 				53AABEFA1EEED587003C72BA /* ViewController.swift in Sources */,
