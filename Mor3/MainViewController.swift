@@ -60,7 +60,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
     }
 
     override func didReceiveMemoryWarning() {
